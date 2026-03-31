@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline de Negociação - Reforma</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --success-color: #27ae60;
+            --pending-color: #f39c12;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        /* Timeline Container */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* Linha vertical central */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 31px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: #dcdde1;
+            border-radius: 2px;
+        }
+
+        /* Item da Timeline */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 80px;
+        }
+
+        /* Círculo do marcador */
+        .timeline-marker {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid var(--accent-color);
+            z-index: 1;
+        }
+
+        .timeline-item.done .timeline-marker {
+            background: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .timeline-item.current .timeline-marker {
+            background: var(--pending-color);
+            border-color: var(--pending-color);
+            box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.2);
+        }
+
+        /* Conteúdo do Card */
+        .timeline-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .done .timeline-content { border-left-color: var(--success-color); }
+        .current .timeline-content { border-left-color: var(--pending-color); }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .badge-client { background: #e8f4fd; color: #3498db; }
+        .badge-arch { background: #fef5e7; color: #e67e22; }
+
+        .file-box {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px dashed #ced4da;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .btn-group {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-approve { background: var(--success-color); color: white; margin-right: 10px; }
+        .btn-edit { background: var(--accent-color); color: white; }
+        button:hover { opacity: 0.8; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Fluxo de Negociação: Reforma Residencial</h1>
+
+    <div class="timeline">
+        
+        <div class="timeline-item done">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">10 Mai 2026</span>
+                <span class="role-badge badge-client">Cliente</span>
+                <h3 class="timeline-title">Solicitação de Reforma</h3>
+                <p>O cliente enviou o briefing inicial solicitando a reforma da suíte master e closet. Foco em estilo industrial.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item done">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">12 Mai 2026</span>
+                <span class="role-badge badge-arch">Arquiteto</span>
+                <h3 class="timeline-title">Modelo Inicial Publicado (V1)</h3>
+                <p>Primeiro estudo volumétrico e planta baixa técnica enviada para análise.</p>
+                <div class="file-box">📎 <strong>Planta_V1_Final.pdf</strong> (2.4 MB)</div>
+            </div>
+        </div>
+
+        <div class="timeline-item done">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">14 Mai 2026</span>
+                <span class="role-badge badge-client">Cliente</span>
+                <h3 class="timeline-title">Solicitação de Mudanças</h3>
+                <p>"Gostaria de alterar a posição da cuba do banheiro e incluir um ponto extra de iluminação no closet."</p>
+            </div>
+        </div>
+
+        <div class="timeline-item done">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">18 Mai 2026</span>
+                <span class="role-badge badge-arch">Arquiteto</span>
+                <h3 class="timeline-title">Ajustes Realizados (V2)</h3>
+                <p>As alterações de hidráulica e iluminação foram aplicadas conforme solicitado. Nova renderização disponível.</p>
+                <div class="file-box">📎 <strong>Projeto_Reforma_V2_Revisado.pdf</strong> (4.1 MB)</div>
+            </div>
+        </div>
+
+        <div class="timeline-item current">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">Hoje</span>
+                <span class="role-badge badge-client">Cliente</span>
+                <h3 class="timeline-title">Aprovação Final</h3>
+                <p>Por favor, revise a versão final e selecione uma das opções abaixo para prosseguirmos com o projeto executivo.</p>
+                <div class="btn-group">
+                    <button class="btn-approve">Aprovar Projeto</button>
+                    <button class="btn-edit">Solicitar Novos Ajustes</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
